@@ -1,12 +1,17 @@
-exports.myMiddleware = (req, res, next) => {
-  req.name = 'Ryan';
-  if (req.name === 'Ryan') {
-    throw Error('That\'s a weird name, huh?');
-  }
-  next();
-};
+const mongoose = require('mongoose');
+Store = mongoose.model('Store');
 
 exports.homePage = (req, res) => {
   console.log(req.name);
   res.render('index');
+};
+
+exports.addStore = (req, res) => {
+  res.render('editStore', { title: 'Add Store' });
+};
+
+exports.createStore = async (req, res) => {
+  const store = new Store(req.body);
+  await store.save();
+  res.redirect('/');
 };
