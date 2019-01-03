@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+haters/
+*.log
+updates/
+*.mp4
+starter-files/
+stepped-solutions/
+videos/
+.idea
+variables.env
+variable.env.now
