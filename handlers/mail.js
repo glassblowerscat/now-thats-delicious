@@ -4,8 +4,11 @@ const juice = require('juice');
 const htmlToText = require('html-to-text');
 const promisify = require('es6-promisify');
 
+const useTls = (process.env.NODE_ENV === "development") ? false : true;
+
 const transport = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
+  secure: useTls,
   port: process.env.MAIL_PORT,
   auth: {
     user: process.env.MAIL_USER,
